@@ -54,17 +54,42 @@ const Header = ({ headers }) => {
             Login
           </button>
         )}
-        <nav>
-          {headers.map((header, index) => (
-            <NavLink
-              key={index}
-              to={header.url}
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              {header.title}
-            </NavLink>
-          ))}
+
+        <nav className={styles.nav}>
+          <ul className={styles.navList}>
+            {headers.map((header, index) => (
+              <li key={index} className={styles.navItem}>
+                <NavLink
+                  to={header.url}
+                  className={({ isActive }) =>
+                    isActive ? styles.active : styles.navLink
+                  }
+                >
+                  {header.title}
+                </NavLink>
+
+                {/* Dropdown (only if children exist) */}
+                {header.children && (
+                  <ul className={styles.dropdown}>
+                    {header.children.map((child, i) => (
+                      <li key={i}>
+                        <NavLink
+                          to={child.url}
+                          className={({ isActive }) =>
+                            isActive ? styles.active : styles.dropdownLink
+                          }
+                        >
+                          {child.title}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
+
       </div>
 
           {/* Shows the popup and everything inside of it */}
