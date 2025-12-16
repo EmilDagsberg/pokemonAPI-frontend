@@ -91,3 +91,64 @@
 .closeButton:hover {
   color: #c40c0c;
 }
+
+.nav {
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #1f1f1f;
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  z-index: 10;
+}
+
+.navItem:hover .dropdown,
+.navItem:focus-within .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  padding: 0;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdownLink:hover {
+  background-color: #333;
+}
+
+/* Active link */
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+

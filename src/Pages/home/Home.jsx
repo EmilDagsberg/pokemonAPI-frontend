@@ -6,7 +6,13 @@ const Home = () => {
     const headers = [
         { title: "Home", url: "/" },
         { title: "Pokedex", url: "/pokedex" },
-        { title: "Vision", url: "/vision" }
+        { title: "Vision", url: "/vision" }, 
+        { title: "Endpoints", url: "/endpoint-overview", 
+            children: [
+                { title: "Overview", url: "/endpoint-overview"},
+                { title: "Search Pokemon", url: "/search-pokemon"}
+            ],
+        },
     ];
 
     return (
