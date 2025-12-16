@@ -1,0 +1,100 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.header p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.createLink {
+  color: #5c82ce;
+  text-decoration: none;
+}
+
+.createLink:hover {
+  text-decoration: underline;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  color: white;
+  font-size: 0.95rem;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+  padding: 0.75rem;
+  background-color: #655e5e;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+}
+
+.loginForm input:focus {
+  outline: none;
+  background-color: #756d6d;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.forgotLink {
+  color: #5c82ce;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+.loginForm button {
+  padding: 0.75rem;
+  background-color: #5c82ce;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.loginForm button:hover {
+  background-color: #4a6bb5;
+}

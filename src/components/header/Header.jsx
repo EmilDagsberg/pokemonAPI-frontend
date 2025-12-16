@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
-import Login from "../login/Login.jsx";
-import styles from "./header/Header.module.css"
+import LoginAuth from "../login/LoginAuth";
+import styles from "./Header.module.css"
 
 
 const Welcome = ({ username, logout }) => (
@@ -14,34 +14,71 @@ const Welcome = ({ username, logout }) => (
 const Header = ({ headers }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const login = (username, password) => {
-    // Dummy login function
+  useEffect(() => {
+    // Check if user is logged in from localStorage
+    const storedUsername = localStorage.getItem("username");
+    const storedLoginState = localStorage.getItem("isLoggedIn");
+    
+    if (storedLoginState === "true" && storedUsername) {
+      setUsername(storedUsername);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = (username, password) => {
     if (username && password) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("isLoggedIn", "true");
       setUsername(username);
       setIsLoggedIn(true);
+      setShowLoginModal(false);
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+    setUsername("");
+  };
+
   return (
-    <div className={styles.header}>
-      <nav>
-        {headers.map((header, index) => (
-          <NavLink
-            key={index}
-            to={header.url}
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            {header.title}
-          </NavLink>
-        ))}
-      </nav>
-      {isLoggedIn ? (
-        <Welcome username={username} logout={() => setIsLoggedIn(false)} />
-      ) : (
-        <Login login={login} />
+    <>
+      <div className={styles.header}>
+        {isLoggedIn ? (
+          <Welcome username={username} logout={logout} />
+        ) : (
+          <button onClick={() => setShowLoginModal(true)} className={styles.loginButton}>
+            Login
+          </button>
+        )}
+        <nav>
+          {headers.map((header, index) => (
+            <NavLink
+              key={index}
+              to={header.url}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              {header.title}
+            </NavLink>
+          ))}
+        </nav>
+      </div>
+
+          {/* Shows the popup and everything inside of it */}
+      {showLoginModal && (
+        <div className={styles.modalOverlay} onClick={() => setShowLoginModal(false)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setShowLoginModal(false)}>
+              × {/* DONT REMOVE X */}
+            </button>
+            <LoginAuth login={handleLogin} />
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
