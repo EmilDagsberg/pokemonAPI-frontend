@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./GetAllPokemon.module.css";
+import AddToPokedex from "../pokedex/AddToPokedex";
+import facade from "../../apiFacade";
 
 const GetAllPokemon = () => {
   const [pokemon, setPokemon] = useState([]);
+  const isLoggedIn = facade.loggedIn();
 
   useEffect(() => {
     fetch("http://localhost:7070/api/pokemon")
@@ -33,6 +36,9 @@ const GetAllPokemon = () => {
               <li>No known locations</li>
             )}
           </ul>
+          
+          {isLoggedIn ? (<AddToPokedex />) : null }
+        
         </div>
       ))}
     </div>
