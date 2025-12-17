@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
 import LoginAuth from "../login/LoginAuth";
+import facade from "../../apiFacade";
 import styles from "./Header.module.css"
 
 
 const Welcome = ({ username, logout }) => (
   <div className={styles.welcome}>
-    <span>Welcome, {username}!</span>
-    <button onClick={logout}>Logout</button>
+    <button onClick={logout} className={styles.loginButton}>Logout</button>
+    <span className={styles.loginGreet}> Welcome, {username}!</span>
   </div>
 );
 
@@ -15,31 +16,38 @@ const Header = ({ headers }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     // Check if user is logged in from localStorage
     const storedUsername = localStorage.getItem("username");
-    const storedLoginState = localStorage.getItem("isLoggedIn");
+    const loggedIn = facade.loggedIn();
     
-    if (storedLoginState === "true" && storedUsername) {
+    if (loggedIn && storedUsername) {
       setUsername(storedUsername);
       setIsLoggedIn(true);
     }
   }, []);
 
   const handleLogin = (username, password) => {
-    if (username && password) {
-      localStorage.setItem("username", username);
-      localStorage.setItem("isLoggedIn", "true");
-      setUsername(username);
-      setIsLoggedIn(true);
-      setShowLoginModal(false);
-    }
+    setError("");
+    
+    facade.login(username, password)
+      .then(() => {
+        localStorage.setItem("username", username);
+        setUsername(username);
+        setIsLoggedIn(true);
+        setShowLoginModal(false);
+      })
+      .catch((err) => {
+        setError("Invalid username or password");
+        console.error("Login failed:", err);
+      });
   };
 
   const logout = () => {
+    facade.logout();
     localStorage.removeItem("username");
-    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     setUsername("");
   };
@@ -99,6 +107,7 @@ const Header = ({ headers }) => {
             <button className={styles.closeButton} onClick={() => setShowLoginModal(false)}>
               × {/* DONT REMOVE X */}
             </button>
+            {error && <div style={{color: 'red', marginBottom: '10px', textAlign: 'center'}}>{error}</div>}
             <LoginAuth login={handleLogin} />
           </div>
         </div>
