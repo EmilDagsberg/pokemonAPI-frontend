@@ -37,7 +37,7 @@ const GetAllPokemon = () => {
             )}
           </ul>
           
-          {isLoggedIn ? (<AddToPokedex />) : null }
+          {isLoggedIn ? (<AddToPokedex pkmonID={pkmon.id}/>) : null }
         
         </div>
       ))}
