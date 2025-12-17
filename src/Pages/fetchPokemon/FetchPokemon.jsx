@@ -1,18 +1,14 @@
 import { useState } from "react";
 import GetAllPokemon from "../../components/search/GetAllPokemon";
+import SearchPokemon from "../../components/search/SearchPokemon";
 
 const FetchPokemon = () => {
   const [showAll, setShowAll] = useState(false);
 
   return (
     <div className="search-container">
-      <h1>Search Pokemon by Name or ID</h1>
 
-      <input
-        className="search-field"
-        type="text"
-        placeholder="Enter Pokemon name or ID..."
-      />
+      <SearchPokemon />
 
       <button
         className="get-all-button"
