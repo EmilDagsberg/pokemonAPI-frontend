@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./SearchPokemon.module.css";
+import facade from "../../apiFacade";
+import AddToPokedex from "../pokedex/AddToPokedex";
 
 const SearchPokemon = () => {
   const [pokemon, setPokemon] = useState([]);
   const [search, setSearch] = useState("");
+  const isLoggedIn = facade.loggedIn();
+
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -64,6 +68,7 @@ const SearchPokemon = () => {
                   <li>No known locations</li>
                 )}
               </ul>
+              {isLoggedIn ? (<AddToPokedex pkmonID={pkmon.id}/>) : null }
             </div>
           ))}
         </div>
