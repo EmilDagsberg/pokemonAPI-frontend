@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import styles from "./Pokedex.module.css";
 import facade from "../../apiFacade.js";
 
+
 export default function Pokedex() {
   const [pokedex, setPokedex] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showOnlyTeam, setShowOnlyTeam] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   useEffect(() => {
     const API_URI = "http://localhost:7070/api/pokedex/";
@@ -19,7 +21,7 @@ export default function Pokedex() {
         console.error("Error while fetching Pokedex data", error);
       });
 
-      setLoading(false);
+    setLoading(false);
   }, []);
 
   const displayedPokemon = showOnlyTeam
@@ -29,7 +31,7 @@ export default function Pokedex() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className={styles.pokedexContainer}>
+    <div className={styles.background}>
       <h1 className={styles.pokedexHeader}>Your pokedex</h1>
       <button
         className={styles.onTeamButton}
@@ -37,30 +39,41 @@ export default function Pokedex() {
       >
         {showOnlyTeam ? "Show entire Pokedex" : "Show Pokemon on your team"}
       </button>
-      <div className={styles.pokemonGrid}>
-        {displayedPokemon.map((pokemon) => (
-          <div key={pokemon.id} className={styles.pokemonCard}>
-            <img src={pokemon.sprite} alt={pokemon.name} />
-            <h3>Name: {pokemon.name}</h3>
-            <p>On team: {pokemon.onTeam ? "✅" : "❌"}</p>
-            <div className="locations">
+      <div className={styles.pokemonContainer}>
+        <div className={styles.pokemonGrid}>
+          {displayedPokemon.map((pokemon) => (
+            <div
+              key={pokemon.id}
+              className={styles.pokemonCard}
+              onClick={() => setSelectedPokemon(pokemon)}
+            >
+              <img src={pokemon.sprite} alt={pokemon.name} />
+              <h3>Name: {pokemon.name}</h3>
+              <p>On team: {pokemon.onTeam ? "✅" : "❌"}</p>
+            </div>
+          ))}
+        </div>
+        <div className={styles.pokemonDetails}>
+          {selectedPokemon ? (
+            <div>
+              <h3>{selectedPokemon.name}</h3>
+              <strong>Types:</strong>
+              <ul>
+                {selectedPokemon.types.map((type, index) => (
+                  <li key={index}>{type.type.name}</li>
+                ))}
+              </ul>
               <strong>Locations:</strong>
               <ul>
-                {pokemon.locations.map((location, index) => (
+                {selectedPokemon.locations.map((location, index) => (
                   <li key={index}>{location}</li>
                 ))}
               </ul>
             </div>
-            <div>
-              <strong>Types:</strong>
-              <ul>
-                {pokemon.types.map((type, index) => (
-                  <li key={index}>{type.name}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
+          ) : (
+            <p>Click a pokemon to view more details</p>
+          )}
+        </div>
       </div>
     </div>
   );
