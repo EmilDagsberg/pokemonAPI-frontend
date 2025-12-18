@@ -65,6 +65,8 @@ const logout = () => {
   localStorage.removeItem("jwtToken");
 };
 
+const username = localStorage.getItem("username")
+
 const facade = {
   makeOptions,
   setToken,
@@ -73,6 +75,7 @@ const facade = {
   login,
   logout,
   fetchData,
+  fetchPokedex
 };
 
 export default facade;

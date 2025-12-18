@@ -6,6 +6,7 @@ import Home from "./Pages/home/Home";
 import LoginPage from "./Pages/login/LoginPage";
 import EndpointTable from "./pages/endpointTable/EndpointTable";
 import FetchPokemon from "./pages/fetchPokemon/FetchPokemon";
+import Pokedex from "./Pages/pokedex/Pokedex";
 
 
 const root = document.getElementById("root");
@@ -20,7 +21,7 @@ ReactDOM.createRoot(root).render(
         <Route path="login" element={<LoginPage />} />
         <Route path="endpoint-overview" element={<EndpointTable />} />
         <Route path="search-pokemon" element={<FetchPokemon />} />
-
+        <Route path="pokedex" element={<Pokedex />} />
       </Route>
     </Routes>
   </BrowserRouter>

@@ -1,45 +1,45 @@
 import { useEffect, useState } from "react";
-import facade from "../apiFacade.js";
+import styles from "./Pokedex.module.css";
+import facade from "../../apiFacade.js";
 
 export default function Pokedex() {
   const [pokedex, setPokedex] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  /*     useEffect(() => {
-        const API_URI = "http://localhost:7070/api/pokedex/"
-
-        facade.fetchPokedex()
-        .then((data) => {
-          setPokedex(data);
-        })
-        .catch((error) => {
-        console.error("Error while fetching Pokedex data", error);
-      });
-    }, []) */
+  const [showOnlyTeam, setShowOnlyTeam] = useState(false);
 
   useEffect(() => {
-    // Mock data. Ovenstående useEffect bruges når backend virker.
-    const mockPokedex = [
-      { pokemonId: 1, userId: 1, isOnTeam: true },
-      { pokemonId: 25, userId: 1, isOnTeam: false },
-      { pokemonId: 6, userId: 1, isOnTeam: true },
-      { pokemonId: 4, userId: 1, isOnTeam: false },
-      { pokemonId: 7, userId: 1, isOnTeam: true },
-      { pokemonId: 150, userId: 1, isOnTeam: false },
-    ];
+    const API_URI = "http://localhost:7070/api/pokedex/";
 
-    setPokedex(mockPokedex);
-    setLoading(false);
+    facade
+      .fetchPokedex()
+      .then((data) => {
+        setPokedex(data);
+      })
+      .catch((error) => {
+        console.error("Error while fetching Pokedex data", error);
+      });
+
+      setLoading(false);
   }, []);
+
+  const displayedPokemon = showOnlyTeam
+    ? pokedex.filter((pokemon) => pokemon.isOnTeam)
+    : pokedex;
 
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="pokedex-container">
-      <h1>Your pokedex</h1>
-      <div className="pokemon-grid">
-        {pokedex.map((pokemon) => (
-          <div key={pokemon.id} className="pokemon-card">
+    <div className={styles.pokedexContainer}>
+      <h1 className={styles.pokedexHeader}>Your pokedex</h1>
+      <button
+        className={styles.onTeamButton}
+        onClick={() => setShowOnlyTeam(!showOnlyTeam)}
+      >
+        {showOnlyTeam ? "Show entire Pokedex" : "Show Pokemon on your team"}
+      </button>
+      <div className={styles.pokemonGrid}>
+        {displayedPokemon.map((pokemon) => (
+          <div key={pokemon.id} className={styles.pokemonCard}>
             <img src={pokemon.sprite} alt={pokemon.name} />
             <h3>Name: {pokemon.name}</h3>
             <div className="locations">
@@ -54,10 +54,11 @@ export default function Pokedex() {
               <strong>Types:</strong>
               <ul>
                 {pokemon.types.map((type, index) => (
-                  <li key={index}>{type}</li>
+                  <li key={index}>{type.name}</li>
                 ))}
               </ul>
             </div>
+            <p>On team: {pokemon.isOnTeam ? "✅" : "❌"}</p>
           </div>
         ))}
       </div>
