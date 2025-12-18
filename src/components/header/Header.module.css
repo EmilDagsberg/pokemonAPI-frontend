@@ -3,13 +3,22 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #292929;
+  position: relative;
+
+  /* This is what makes the header "glass-like" */
+  background: rgba(41, 41, 41, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header nav {
   display: flex;
   gap: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Moves them slightly to the left (x-axis) */
 }
 
 .header nav a {
@@ -43,6 +52,12 @@
   background-color: #5a6268;
 }
 
+.loginGreet {
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
 /* Modal styles, ( box that popups after clicking on the Login button :D ) */
 .modalOverlay {
   position: fixed;
@@ -58,7 +73,10 @@
 }
 
 .modalContent {
-  background: #292929;
+  background: rgba(41, 41, 41, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);

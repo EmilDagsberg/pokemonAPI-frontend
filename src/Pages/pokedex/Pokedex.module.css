@@ -1,24 +1,12 @@
-.pokedexHeader{
-    text-align: center;
-    color: darkgoldenrod;
-}
-
-.pokedexContainer {
-  padding: 20px;
-}
-
-.pokemonGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-}
-
-.pokemonCard {
-  border: 2px solid #333;
-  border-radius: 8px;
-  border-color: red;
-  padding: 15px;
-  width: 200px;
-  background-color: silver;
+.background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('../../assets/darkmode.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
