@@ -29,6 +29,11 @@ const fetchData = () => {
   return fetch(BASE_URL + "hotels", options).then(handleHttpErrors);
 };
 
+const fetchPokedex = () => {
+  const options = makeOptions("GET", true);
+  return fetch(BASE_URL + "pokedex", options).then(handleHttpErrors);
+}
+
 const makeOptions = (method, addToken, body) => {
   var opts = {
     method: method,
@@ -60,6 +65,8 @@ const logout = () => {
   localStorage.removeItem("jwtToken");
 };
 
+const username = localStorage.getItem("username")
+
 const facade = {
   makeOptions,
   setToken,
@@ -68,6 +75,7 @@ const facade = {
   login,
   logout,
   fetchData,
+  fetchPokedex
 };
 
 export default facade;
