@@ -31,7 +31,7 @@ const fetchData = () => {
 
 const fetchPokedex = () => {
   const options = makeOptions("GET", true);
-  return fetch(BASE_URL, + "pokedex", options).then(handleHttpErrors);
+  return fetch(BASE_URL + "pokedex", options).then(handleHttpErrors);
 }
 
 const makeOptions = (method, addToken, body) => {
