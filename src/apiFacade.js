@@ -6,7 +6,7 @@ function handleHttpErrors(res) {
     return Promise.reject({ status: res.status, fullError: res.json() });
   }
   return res.json();
-}
+};
 
 /* Insert utility-methods from later steps 
 here (REMEMBER to uncomment in the returned 
@@ -24,15 +24,15 @@ const login = (user, password) => {
     });
 };
 
-const fetchData = () => {
-  const options = makeOptions("GET", true); //True add's the token
-  return fetch(BASE_URL + "hotels", options).then(handleHttpErrors);
-};
-
 const fetchPokedex = () => {
   const options = makeOptions("GET", true);
   return fetch(BASE_URL + "pokedex", options).then(handleHttpErrors);
-}
+};
+
+const addPokemonToTeam = (pokemonId) => {
+  const options = makeOptions("PUT", true);
+  return fetch(BASE_URL + "pokedex/" + pokemonId, options).then(handleHttpErrors);
+};
 
 const makeOptions = (method, addToken, body) => {
   var opts = {
@@ -74,8 +74,8 @@ const facade = {
   loggedIn,
   login,
   logout,
-  fetchData,
-  fetchPokedex
+  fetchPokedex,
+  addPokemonToTeam
 };
 
 export default facade;

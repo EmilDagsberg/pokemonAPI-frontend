@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./Pokedex.module.css";
 import facade from "../../apiFacade.js";
 
-
 export default function Pokedex() {
   const [pokedex, setPokedex] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,6 +22,20 @@ export default function Pokedex() {
 
     setLoading(false);
   }, []);
+
+  const handleAddtoTeam = (pokemonId) => {
+    facade
+      .addPokemonToTeam(pokemonId)
+      .then(() => {
+        return facade.fetchPokedex();
+      })
+      .then((data) => {
+        setPokedex(data);
+      })
+      .catch((error) => {
+        console.error("Error while adding Pokemon to team", error);
+      });
+  };
 
   const displayedPokemon = showOnlyTeam
     ? pokedex.filter((pokemon) => pokemon.onTeam)
@@ -49,7 +62,14 @@ export default function Pokedex() {
             >
               <img src={pokemon.sprite} alt={pokemon.name} />
               <h3>Name: {pokemon.name}</h3>
-              <p>On team: {pokemon.onTeam ? "✅" : "❌"}</p>
+              {pokemon.onTeam ? (
+                <p>On team: ✅</p>
+              )
+            :
+            (
+              <button onClick={() => handleAddtoTeam(pokemon.id)}>Add to team</button>
+            )
+            }
             </div>
           ))}
         </div>
