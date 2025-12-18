@@ -23,7 +23,7 @@ export default function Pokedex() {
   }, []);
 
   const displayedPokemon = showOnlyTeam
-    ? pokedex.filter((pokemon) => pokemon.isOnTeam)
+    ? pokedex.filter((pokemon) => pokemon.onTeam)
     : pokedex;
 
   if (loading) return <div>Loading...</div>;
@@ -42,6 +42,7 @@ export default function Pokedex() {
           <div key={pokemon.id} className={styles.pokemonCard}>
             <img src={pokemon.sprite} alt={pokemon.name} />
             <h3>Name: {pokemon.name}</h3>
+            <p>On team: {pokemon.onTeam ? "✅" : "❌"}</p>
             <div className="locations">
               <strong>Locations:</strong>
               <ul>
@@ -58,7 +59,6 @@ export default function Pokedex() {
                 ))}
               </ul>
             </div>
-            <p>On team: {pokemon.isOnTeam ? "✅" : "❌"}</p>
           </div>
         ))}
       </div>

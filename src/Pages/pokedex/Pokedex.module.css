@@ -10,3 +10,30 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.pokedexHeader{
+    text-align: center;
+    color: darkgoldenrod;
+}
+
+.pokedexContainer {
+  padding: 20px;
+}
+
+.pokemonGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.pokemonCard {
+  border: 2px solid #333;
+  border-radius: 8px;
+  border-color: red;
+  padding: 15px;
+  width: 200px;
+  max-height: 250px;
+  background-color: silver;
+  overflow: scroll;
+}
