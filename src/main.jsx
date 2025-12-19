@@ -8,6 +8,7 @@ import FetchPokemon from "./pages/fetchPokemon/FetchPokemon";
 import Vision from "./Pages/vision/Vision";
 import Pokedex from "./Pages/pokedex/Pokedex";
 import GetRandomPokemon from "./pages/getRandom/GetRandomPokemon";
+import FetchRandomPokemonByType from "./pages/fetchPokemon/FetchPokemonByType";
 
 
 
@@ -25,6 +26,7 @@ ReactDOM.createRoot(root).render(
         <Route path="vision" element={<Vision/>} />
         <Route path="pokedex" element={<Pokedex/>} />
         <Route path="get-random-pokemon" element={<GetRandomPokemon />} />
+        <Route path="get-pokemon-by-type" element={<FetchRandomPokemonByType />} />
 
 
       </Route>
