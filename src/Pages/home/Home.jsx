@@ -10,7 +10,9 @@ const Home = () => {
         { title: "Endpoints", url: "/endpoint-overview", 
             children: [
                 { title: "Overview", url: "/endpoint-overview"},
-                { title: "Search Pokemon", url: "/search-pokemon"}
+                { title: "Search Pokemon", url: "/search-pokemon"},
+                { title: "Get Pokemon by type", url: "/get-pokemon-by-type"},
+                { title: "Get a random Pokemon", url: "/get-random-pokemon"}
             ],
         },
     ];
