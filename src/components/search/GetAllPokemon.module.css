@@ -18,6 +18,12 @@
   overflow: scroll;
 }
 
+/* Subtle hover lift (optional but nice) */
+.pokemonCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
 .sectionTitle {
   font-weight: bold;
   margin-top: 0.75rem;

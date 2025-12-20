@@ -2,7 +2,22 @@ import { useState } from 'react';
 import styles from "./Vision.module.css";
 
 const Vision = () => {
+
+  const headers = [
+        { title: "Home", url: "/" },
+        { title: "Pokedex", url: "/pokedex" },
+        { title: "Vision", url: "/vision" }, 
+        { title: "Endpoints", url: "/endpoint-overview", 
+            children: [
+                { title: "Overview", url: "/endpoint-overview"},
+                { title: "Search Pokemon", url: "/search-pokemon"},
+                { title: "Get Pokemon by type", url: "/get-pokemon-by-type"},
+                { title: "Get a random Pokemon", url: "/get-random-pokemon"}
+            ],
+        },
+    ];
   const [activeSection, setActiveSection] = useState('about');
+
 
   const renderContent = () => {
     switch(activeSection) {

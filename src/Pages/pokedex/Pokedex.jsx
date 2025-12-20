@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react";
 import styles from "./Pokedex.module.css";
-import facade from "../../apiFacade.js";
+
+import Header from "../../components/header/Header";
 
 export default function Pokedex() {
+    const headers = [
+        { title: "Home", url: "/" },
+        { title: "Pokedex", url: "/pokedex" },
+        { title: "Vision", url: "/vision" }, 
+        { title: "Endpoints", url: "/endpoint-overview", 
+            children: [
+                { title: "Overview", url: "/endpoint-overview"},
+                { title: "Search Pokemon", url: "/search-pokemon"},
+                { title: "Get Pokemon by type", url: "/get-pokemon-by-type"},
+                { title: "Get a random Pokemon", url: "/get-random-pokemon"}
+            ],
+        },
+    ];
   const [pokedex, setPokedex] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showOnlyTeam, setShowOnlyTeam] = useState(false);
@@ -42,6 +56,7 @@ export default function Pokedex() {
     : pokedex;
 
   if (loading) return <div>Loading...</div>;
+
 
   return (
     <div className={styles.background}>
