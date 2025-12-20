@@ -66,6 +66,7 @@ const makeOptions = (method, addToken, body) => {
 
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
+  window.dispatchEvent(new Event("auth-change"))
 };
 const getToken = () => {
   return localStorage.getItem("jwtToken");
@@ -76,6 +77,8 @@ const loggedIn = () => {
 };
 const logout = () => {
   localStorage.removeItem("jwtToken");
+  window.dispatchEvent(new Event("auth-change"))
+
 };
 
 const username = localStorage.getItem("username")
