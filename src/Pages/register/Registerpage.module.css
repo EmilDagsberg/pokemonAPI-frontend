@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  padding: 2rem;
+  gap: 2rem;
+  background-color: rgba(0, 0, 0, 0.5); /* Adds tinted gradient so background looks darker */
+}
+
+.registerForm {
+  flex: 1;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  color: white;
+  overflow-y: auto;
+  margin-bottom: 20%;
+  margin-left: 30%;
+  margin-right: 30%;
+
+   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  color: white;
+  font-size: 0.95rem;
+  padding-top: 10px;
+}
+
+.registerForm input[type="text"],
+.registerForm input[type="password"] {
+  padding: 0.75rem;
+  background-color: #655e5e;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+}
+
+.registerForm input:focus {
+  outline: none;
+  background-color: #756d6d;
+}
+
+.registerForm button {
+  padding: 0.75rem;
+  background-color: #5c82ce;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 0.8rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.registerForm button:hover {
+  background-color: #4a6bb5;
+}
+
+.error {
+  color: red;
+}
+
+.loginLink {
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+}
+
+.loginLink a {
+  color: #5c82ce;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loginLink a:hover {
+  color: #7fa3e8;
+  text-decoration: underline;
+}
