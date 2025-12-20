@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import styles from "./Login.module.css";
 
 const Login = ({ login }) => {
@@ -15,11 +16,11 @@ const Login = ({ login }) => {
     <form className={styles.loginForm} onSubmit={handleSubmit}>
       <div className={styles.header}>
         <h2>Login</h2>
-        <p>Need an Account? <a href="#" className={styles.createLink}>Create one</a></p>
+        <p>Need an Account? <Link to="/register" className={styles.createLink}>Create one</Link></p>
       </div>
 
       <div className={styles.inputGroup}>
-        <label>Email</label>
+        <label>Username</label>
         <input
           type="text"
           placeholder=""
