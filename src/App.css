@@ -2,15 +2,17 @@ body {
   background-color: #292929;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .background {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
+  width: 100%;
+  min-height: 100vh;
   background-image: url('./assets/darkmode.png');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
