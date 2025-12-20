@@ -1,54 +1,64 @@
 .searchContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  grid-template-columns: 1fr; /* single, featured result */
   gap: 2rem;
   padding: 2rem;
-  justify-content: start;
+  justify-content: center;
 }
 
-
+/* Highlighted Pokémon card */
 .pokemonCard {
   background-color: #d3d3d3;
-  border: 2px solid red;
-  border-radius: 10px;
-  padding: 1rem;
+  border: 3px solid #d32f2f; /* stronger red */
+  border-radius: 14px;
+  padding: 1.5rem;
   text-align: center;
   color: #000;
-  max-height: 250px;
-  overflow: scroll;
+
+  width: 320px;
+  max-height: 420px;
+
+  overflow-y: auto;
+
+  /* Highlight effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Subtle hover lift (optional but nice) */
+.pokemonCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 .sectionTitle {
   font-weight: bold;
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
   text-align: left;
-  font-size: 0.95rem;
+  font-size: 1rem;
   border-bottom: 1px solid #aaa;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.3rem;
 }
-
-
 
 .pokemonCard h3 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   text-transform: capitalize;
+  font-size: 1.4rem;
 }
-
 
 .pokemonCard img {
-  width: 96px;
-  height: 96px;
+  width: 128px;
+  height: 128px;
   object-fit: contain;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
-
 
 .type {
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
 }
-
 
 .locations {
   list-style-type: disc;
@@ -57,5 +67,5 @@
 }
 
 .locations li {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }

@@ -32,6 +32,12 @@
   padding-bottom: 0.2rem;
 }
 
+/* Subtle hover lift (optional but nice) */
+.pokemonCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
 
 .pokemonCard h3 {
   text-transform: capitalize;

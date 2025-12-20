@@ -1,6 +1,5 @@
 import { useState } from "react";
 import AddToPokedex from "../pokedex/AddToPokedex";
-import facade from "../../apiFacade";
 import styles from "./RandomPokemon.module.css";
 
 const POKEMON_TYPES = [
@@ -21,11 +20,8 @@ const POKEMON_TYPES = [
     "dragon"
 ];
 
-const RandomPokemonByType = () => {
-    const [pokemon, setPokemon] = useState(null);
+const RandomPokemonByType = ({ setPokemon }) => {
     const [type, setType] = useState("");
-    
-    const isLoggedIn = facade.loggedIn();
 
     const fetchRandomPokemonByType = () => {
         if (!type) return;
@@ -38,7 +34,6 @@ const RandomPokemonByType = () => {
 
     return (
         <div>
-            {/* Type selector */}
             <select
                 className={styles.typeSelect}
                 value={type}
@@ -60,33 +55,6 @@ const RandomPokemonByType = () => {
             >
                 Get a random Pokémon
             </button>
-
-            <div className={styles.searchContainer}>
-                {pokemon && (
-                    <div key={pokemon.id} className={styles.pokemonCard}>
-                        <h3>{pokemon.name}</h3>
-
-                        <img src={pokemon.sprite} alt={pokemon.name} />
-
-                        <p className={styles.type}>
-                            {pokemon.types?.[0]?.type?.name || "Unknown type"}
-                        </p>
-
-                        <p className={styles.sectionTitle}>Locations</p>
-                        <ul className={styles.locations}>
-                            {pokemon.locations?.length > 0 ? (
-                                pokemon.locations.map((loc, index) => (
-                                    <li key={index}>{loc}</li>
-                                ))
-                            ) : (
-                                <li>No known locations</li>
-                            )}
-                        </ul>
-
-                        {isLoggedIn && <AddToPokedex pkmonID={pokemon.id} />}
-                    </div>
-                )}
-            </div>
         </div>
     );
 };
