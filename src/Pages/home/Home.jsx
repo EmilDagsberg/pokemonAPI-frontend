@@ -2,6 +2,20 @@ import styles from "./Home.module.css"
 import logo from "../../assets/PokemonApiLogo.png"
 import darkmode from "../../assets/darkmode.png"
 const Home = () => {
+    const headers = [
+        { title: "Home", url: "/" },
+        { title: "Pokedex", url: "/pokedex" },
+        { title: "Vision", url: "/vision" }, 
+        { title: "Endpoints", url: "/endpoint-overview", 
+            children: [
+                { title: "Overview", url: "/endpoint-overview"},
+                { title: "Search Pokemon", url: "/search-pokemon"},
+                { title: "Get Pokemon by type", url: "/get-pokemon-by-type"},
+                { title: "Get a random Pokemon", url: "/get-random-pokemon"}
+            ],
+        },
+    ];
+
     return (
         <div className={styles.container}>
             <div className={styles.logoSection}>
