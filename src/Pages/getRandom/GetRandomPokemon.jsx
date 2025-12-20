@@ -18,6 +18,7 @@ const GetRandomPokemon = () => {
             {pokemon && (
                 <div className={styles.searchContainer}>
                     <div key={pokemon.id} className={styles.pokemonCard}>
+                        <h3>#{pokemon.id}</h3>
                         <h3>{pokemon.name}</h3>
 
                         <img src={pokemon.sprite} alt={pokemon.name} />

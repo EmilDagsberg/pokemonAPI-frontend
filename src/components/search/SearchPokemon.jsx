@@ -50,6 +50,7 @@ const SearchPokemon = () => {
         <div className={styles.resultsGrid}>
           {filteredPokemon.map((pkmon) => (
             <div key={pkmon.id} className={styles.pokemonCard}>
+              <h3>#{pkmon.id}</h3>
               <h3>{pkmon.name}</h3>
 
               <img src={pkmon.sprite} alt={pkmon.name} />
