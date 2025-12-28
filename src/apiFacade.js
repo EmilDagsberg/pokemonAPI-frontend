@@ -17,7 +17,7 @@ async function handleHttpErrors(res) {
   const text = await res.text();
   return text ? JSON.parse(text) : null;
 }
-
+ 
 
 /* Insert utility-methods from later steps 
 here (REMEMBER to uncomment in the returned 
