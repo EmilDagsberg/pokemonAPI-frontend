@@ -40,7 +40,11 @@ function App() {
                 { title: "Get a random Pokemon", url: "/get-random-pokemon"}
             ],
         },
-        ...(isAdmin ? [{ title: "Admin", url: "/admin" }] : [])
+        ...(isAdmin ? [{ title: "Admin",
+          children: [
+            { title: "Update or delete Pokemon", url: "/delete-update-pokemon"}
+          ]
+         }] : [])
     ];
 
   return (

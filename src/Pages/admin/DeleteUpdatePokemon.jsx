@@ -1,8 +1,9 @@
+import ShowPokemon from "../../components/admin/ShowPokemon";
 
 const DeleteUpdatePokemon = () =>{
     return (
         <div>
-            <p>you are here</p>
+            <ShowPokemon />
         </div>
     )
 }

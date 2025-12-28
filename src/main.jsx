@@ -33,7 +33,7 @@ ReactDOM.createRoot(root).render(
         <Route path="register" element={<Registerpage />} />
         
         <Route element={<RequireAdmin />} >
-          <Route path="admin" element={<DeleteUpdatePokemon />} />
+          <Route path="delete-update-pokemon" element={<DeleteUpdatePokemon />} />
         </Route>
 
       </Route>
