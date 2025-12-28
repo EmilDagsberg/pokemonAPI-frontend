@@ -1,6 +1,7 @@
 import { useState } from "react";
 import facade from "../../apiFacade";
 import styles from "./GetAllPokemon.module.css";
+import AddToPokedex from "../pokedex/AddToPokedex";
  
 
 const POKEMON_TYPES = [
