@@ -12,6 +12,7 @@ import FetchRandomPokemonByType from "./pages/fetchPokemon/FetchPokemonByType";
 import Registerpage from "./Pages/register/Registerpage";
 import DeleteUpdatePokemon from "./pages/admin/DeleteUpdatePokemon";
 import RequireAdmin from "./RequireAdmin";
+import CreatePokemon from "./pages/admin/CreatePokemon";
 
 
 
@@ -33,6 +34,7 @@ ReactDOM.createRoot(root).render(
         <Route path="register" element={<Registerpage />} />
         
         <Route element={<RequireAdmin />} >
+          <Route path="create-pokemon" element={<CreatePokemon />} />
           <Route path="delete-update-pokemon" element={<DeleteUpdatePokemon />} />
         </Route>
 

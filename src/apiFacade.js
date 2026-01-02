@@ -107,10 +107,17 @@ const deletePokemon = (pokemonId) => {
   ).then(handleHttpErrors);
 };
 
+const createPokemon = (pokemon) => {
+  const options = makeOptions("POST", true, pokemon);
+  return fetch(BASE_URL + "pokemon", options).then(handleHttpErrors);
+};
+
+
 
 const username = localStorage.getItem("username")
 
 const facade = {
+  createPokemon,
   deletePokemon,
   updatePokemon,
   makeOptions,
