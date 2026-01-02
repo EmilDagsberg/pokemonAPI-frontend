@@ -42,6 +42,7 @@ function App() {
         },
         ...(isAdmin ? [{ title: "Admin",
           children: [
+            { title: "Create new Pokemon in database", url: "/create-pokemon"},
             { title: "Update or delete Pokemon", url: "/delete-update-pokemon"}
           ]
          }] : [])
