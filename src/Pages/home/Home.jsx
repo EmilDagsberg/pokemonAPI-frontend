@@ -1,6 +1,5 @@
 import styles from "./Home.module.css"
 import logo from "../../assets/PokemonApiLogo.png"
-import darkmode from "../../assets/darkmode.png"
 const Home = () => {
 
 
