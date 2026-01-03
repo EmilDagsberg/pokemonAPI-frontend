@@ -14,7 +14,7 @@ function App() {
       if (token) {
         const decoded = jwtDecode(token)
         setIsAdmin(
-          decoded.roles === "admin"
+          decoded.roles.includes("admin")
         )
       } else {
         setIsAdmin(false)
