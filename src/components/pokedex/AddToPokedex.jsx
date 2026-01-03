@@ -1,62 +1,52 @@
 import { useEffect, useState } from "react";
-import facade from "../../apiFacade"
+import facade from "../../apiFacade";
+import styles from "./AddToPokedex.module.css";
 
 const AddToPokedex = ({ pkmonID }) => {
-    const [inPokedex, setInPokedex] = useState(false);
+  const [inPokedex, setInPokedex] = useState(false);
 
-    useEffect (() => {
-        const options = facade.makeOptions("GET", true);
+  useEffect(() => {
+    const options = facade.makeOptions("GET", true);
 
-        fetch("http://localhost:7070/api/pokedex", options)
-        .then(res => {
-            if (!res.ok) {
-                throw new Error("Failed to fetch Pokedex");
-            }
-            return res.json();
-        })
-        .then(data => {
-            const exists = data.some(pokemon => pokemon.id === pkmonID);
-            setInPokedex(exists);
-        })
-        .catch(err => console.error(err));
-    }, [pkmonID]);
-    
-    
-    
-   
+    fetch("http://localhost:7070/api/pokedex", options)
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to fetch Pokedex");
+        return res.json();
+      })
+      .then(data => {
+        const exists = data.some(pokemon => pokemon.id === pkmonID);
+        setInPokedex(exists);
+      })
+      .catch(err => console.error(err));
+  }, [pkmonID]);
 
-    const handleSubmit = () => {
-         const postOptions = facade.makeOptions("POST", true);
-        
-        fetch(`http://localhost:7070/api/pokedex/${pkmonID}`, postOptions)
-        .then(res => {
-            if(!res.ok) {
-                throw new Error("Not authorized or request failed");
-            }
-            return res.json();
-        })
-        .then(data => {
-            console.log("Added to Pokedex:", data)
-            setInPokedex(true);
-        })
-        .catch(err => {
-            console.error(err);
-        });
-    };
+  const handleSubmit = () => {
+    const postOptions = facade.makeOptions("POST", true);
 
-    if (inPokedex) {
-        return (
-            <div className="alreadyAdded">
-                <p>Already added in your Pokedex</p>
-            </div>
-        )
-    }
+    fetch(`http://localhost:7070/api/pokedex/${pkmonID}`, postOptions)
+      .then(res => {
+        if (!res.ok) throw new Error("Request failed");
+        return res.json();
+      })
+      .then(() => setInPokedex(true))
+      .catch(err => console.error(err));
+  };
 
+  if (inPokedex) {
     return (
-        <div className="addPokemon-wrapper">
-            <button onClick={handleSubmit}>Add to your Pokedex</button>
-        </div>
+      <div className={styles.alreadyAdded}>
+        ✔ Already in your Pokédex
+      </div>
     );
-}
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <button onClick={handleSubmit} className={styles.addButton}>
+        ➕ Add to Pokédex
+      </button>
+    </div>
+  );
+};
 
 export default AddToPokedex;

@@ -35,6 +35,13 @@
   -webkit-user-drag: none;
 }
 
+/* Logo css der fiksker logo for Emil. Om det skal bruges idk
+.logo {
+  width: min(40vw, 350px); 
+  height: auto;
+  display: block;
+}
+*/
 
 .title {
   font-size: 3rem;

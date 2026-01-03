@@ -65,3 +65,62 @@
 .locations li {
   font-size: 0.9rem;
 }
+
+/* ---------- Actions (Update & Delete) ---------- */
+
+.actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Update form */
+.updateForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.updateInput {
+  flex: 1;
+  padding: 0.35rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  font-size: 0.85rem;
+}
+
+.updateInput:focus {
+  outline: none;
+  border-color: #555;
+}
+
+/* Buttons */
+.updateButton {
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.updateButton:hover {
+  background-color: #43a047;
+}
+
+.deleteButton {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #e53935;
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: #d32f2f;
+}
+
