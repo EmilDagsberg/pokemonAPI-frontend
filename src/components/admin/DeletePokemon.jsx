@@ -1,7 +1,7 @@
 import facade from "../../apiFacade";
+import styles from "./ShowPokemon.module.css";
 
 const DeletePokemon = ({ id, onDeleted }) => {
-
   const handleDelete = async () => {
     if (!window.confirm("Delete this Pokémon?")) return;
 
@@ -13,8 +13,11 @@ const DeletePokemon = ({ id, onDeleted }) => {
     }
   };
 
-  return <button onClick={handleDelete}>Delete</button>;
+  return (
+    <button onClick={handleDelete} className={styles.deleteButton}>
+      Delete
+    </button>
+  );
 };
 
 export default DeletePokemon;
-

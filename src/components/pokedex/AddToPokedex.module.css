@@ -1,0 +1,34 @@
+.wrapper {
+  margin-top: 0.75rem;
+}
+
+.addButton {
+  width: 100%;
+  padding: 0.45rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.addButton:hover {
+  background-color: #43a047;
+}
+
+.addButton:active {
+  transform: scale(0.97);
+}
+
+.alreadyAdded {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2e7d32;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  padding: 0.4rem;
+}
