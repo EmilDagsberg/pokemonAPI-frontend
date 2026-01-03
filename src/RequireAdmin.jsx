@@ -10,7 +10,7 @@ const RequireAdmin = () => {
 
     const decoded = jwtDecode(token);
 
-    if (decoded.roles !== "admin") {
+    if (!decoded.roles.includes("admin")) {
         return <Navigate to="/" replace />;
     }
 
