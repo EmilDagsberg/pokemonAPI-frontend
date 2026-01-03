@@ -35,7 +35,7 @@ const Registerpage = () => {
     <div className={styles.container}>
       <form className={styles.registerForm} onSubmit={handleSubmit}>
         <h2>Create Account</h2>
-        
+
         {error && <p className={styles.error}>{error}</p>}
 
         <div className={styles.inputGroup}>
@@ -72,7 +72,7 @@ const Registerpage = () => {
         </div>
 
         <button type="submit">Create Account</button>
-        
+
         <p className={styles.loginLink}>
           Already have an account? <a href="/">Back to Home</a>
         </p>

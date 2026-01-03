@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 
 function App() {
     const [isAdmin, setIsAdmin] = useState(false)
+    const backgroundMode = localStorage.getItem("__darkreader__wasEnabledForHost")
+    const [isDarkMode, setIsDarkMode] = useState(backgroundMode === "true")
 
     useEffect(() => {
     const updateAuth = () => {
@@ -49,9 +51,30 @@ function App() {
     ];
 
   return (
-    <div className="background">
+    <div className={isDarkMode ? "background" : "background-light"}>
       <Header headers={headers} />
       <Outlet />
+      <button 
+        onClick={() => {
+          
+          const newMode = !isDarkMode
+          setIsDarkMode(newMode)
+          localStorage.setItem("__darkreader__wasEnabledForHost", newMode.toString())
+        }}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          padding: '10px 20px',
+          cursor: 'pointer',
+          borderRadius: '5px',
+          border: 'none',
+          backgroundColor: isDarkMode ? '#fff' : '#333',
+          color: isDarkMode ? '#333' : '#fff'
+        }}
+      >
+        {isDarkMode ? 'Switch to: ☀️ Light Mode' : 'Switch to: 🌙 Dark Mode'}
+      </button>
     </div>
   )
 }
