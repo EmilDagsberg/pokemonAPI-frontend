@@ -3,14 +3,22 @@ import styles from "./Pokedex.module.css";
 import facade from "../../apiFacade";
 
 import Header from "../../components/header/Header";
+import { useNavigate } from "react-router";
 
 export default function Pokedex() {
   const [pokedex, setPokedex] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showOnlyTeam, setShowOnlyTeam] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const isLoggedIn = facade.loggedIn();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+      alert("To use our Pokedex feature. You are needed to login")
+    }
+
     const API_URI = "http://localhost:7070/api/pokedex/";
 
     facade

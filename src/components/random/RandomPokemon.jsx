@@ -10,13 +10,15 @@ const RandomPokemon = ({ setPokemon }) => {
     };
 
     return (
-        <button
-            className={styles.randomButton}
-            type="button"
-            onClick={fetchRandomPokemon}
-        >
-            Get a random Pokémon
-        </button>
+        <div className={styles.controls}>
+            <button
+                className={styles.randomButton}
+                type="button"
+                onClick={fetchRandomPokemon}
+            >
+                Get a random Pokémon
+            </button>
+        </div>
     );
 };
 

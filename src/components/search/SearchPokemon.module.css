@@ -1,7 +1,25 @@
 .searchContainer {
   padding: 2rem;
+  color:darkgoldenrod;
 }
 
+
+.searchField {
+  width: 100%;
+  max-width: 520px;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  transition: box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.searchField:focus {
+  outline: none;
+  border-color: #fe1817;
+  box-shadow: 0 8px 24px rgba(254, 24, 23, 0.07);
+}
 
 
 .resultsGrid {

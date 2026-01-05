@@ -40,28 +40,30 @@ const SearchByType = () => {
 
     return (
         <div>
-            {/* Type selector */}
-            <select
-                className={styles.typeSelect}
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-            >
-                <option value="">Select a type</option>
-                {POKEMON_TYPES.map(t => (
-                    <option key={t} value={t}>
-                        {t.charAt(0).toUpperCase() + t.slice(1)}
-                    </option>
-                ))}
-            </select>
+            <div className={styles.controls}>
+                {/* Type selector */}
+                <select
+                    className={styles.typeSelect}
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                >
+                    <option value="">Select a type</option>
+                    {POKEMON_TYPES.map(t => (
+                        <option key={t} value={t}>
+                            {t.charAt(0).toUpperCase() + t.slice(1)}
+                        </option>
+                    ))}
+                </select>
 
-            <button
-                className={styles.randomButton}
-                type="button"
-                onClick={fetchPokemonByType}
-                disabled={!type}
-            >
-                Get a random Pokémon
-            </button>
+                <button
+                    className={styles.randomButton}
+                    type="button"
+                    onClick={fetchPokemonByType}
+                    disabled={!type}
+                >
+                    Get Pokémons
+                </button>
+            </div>
 
             <div className={styles.searchContainer}>
                 {pokemon.map((pkmon) => (

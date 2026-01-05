@@ -1,6 +1,6 @@
 import SearchByType from "../../components/search/SearchByType";
 
-const FetchRandomPokemonByType = () => {
+const FetchPokemonByType = () => {
 
     return (
         <div className="search-container">
@@ -9,4 +9,4 @@ const FetchRandomPokemonByType = () => {
     )
 }
 
-export default FetchRandomPokemonByType;
+export default FetchPokemonByType;
