@@ -14,6 +14,7 @@
   padding: 1.5rem;
   text-align: center;
   color: #000;
+  
 
   width: 320px;
   max-height: 420px;
@@ -68,4 +69,56 @@
 
 .locations li {
   font-size: 0.95rem;
+}
+
+/* Controls (type select + button) */
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.typeSelect {
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  transition: box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.typeSelect:focus {
+  outline: none;
+  border-color: #fe1817;
+  box-shadow: 0 8px 24px rgba(254, 24, 23, 0.07);
+}
+
+.randomButton {
+  padding: 0.55rem 1rem;
+  background: linear-gradient(90deg, #ff6b6b 0%, #fe1817 100%);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(254, 24, 23, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.randomButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(254, 24, 23, 0.22);
+}
+
+.randomButton:active {
+  transform: translateY(0);
+  opacity: 0.95;
+}
+
+.randomButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
 }

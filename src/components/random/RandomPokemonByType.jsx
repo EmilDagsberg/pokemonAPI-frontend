@@ -34,27 +34,29 @@ const RandomPokemonByType = ({ setPokemon }) => {
 
     return (
         <div>
-            <select
-                className={styles.typeSelect}
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-            >
-                <option value="">Select a type</option>
-                {POKEMON_TYPES.map(t => (
-                    <option key={t} value={t}>
-                        {t.charAt(0).toUpperCase() + t.slice(1)}
-                    </option>
-                ))}
-            </select>
+            <div className={styles.controls}>
+                <select
+                    className={styles.typeSelect}
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                >
+                    <option value="">Select a type</option>
+                    {POKEMON_TYPES.map(t => (
+                        <option key={t} value={t}>
+                            {t.charAt(0).toUpperCase() + t.slice(1)}
+                        </option>
+                    ))}
+                </select>
 
-            <button
-                className={styles.randomButton}
-                type="button"
-                onClick={fetchRandomPokemonByType}
-                disabled={!type}
-            >
-                Get a random Pokémon
-            </button>
+                <button
+                    className={styles.randomButton}
+                    type="button"
+                    onClick={fetchRandomPokemonByType}
+                    disabled={!type}
+                >
+                    Get a random Pokémon
+                </button>
+            </div>
         </div>
     );
 };

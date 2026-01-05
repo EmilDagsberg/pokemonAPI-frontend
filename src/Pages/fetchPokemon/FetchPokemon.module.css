@@ -1,0 +1,28 @@
+
+.getAllButton {
+  margin-left: 30px;
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(90deg, #ff6b6b 0%, #fe1817 100%);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(254, 24, 23, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.getAllButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(254, 24, 23, 0.22);
+}
+
+.getAllButton:active {
+  transform: translateY(0);
+  opacity: 0.95;
+}
+
+.getAllButton:focus {
+  outline: 3px solid rgba(254, 24, 23, 0.14);
+  outline-offset: 2px;
+}

@@ -1,17 +1,18 @@
 import { useState } from "react";
 import GetAllPokemon from "../../components/search/GetAllPokemon";
 import SearchPokemon from "../../components/search/SearchPokemon";
+import styles from "./FetchPokemon.module.css";
 
 const FetchPokemon = () => {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="search-container">
+    <div className={styles.searchContainer}>
 
       <SearchPokemon />
 
       <button
-        className="get-all-button"
+        className={styles.getAllButton}
         type="button"
         onClick={() => setShowAll(true)}
       >
