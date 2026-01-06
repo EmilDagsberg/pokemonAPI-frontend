@@ -19,8 +19,6 @@ export default function Pokedex() {
       alert("To use our Pokedex feature. You are needed to login")
     }
 
-    const API_URI = "http://localhost:7070/api/pokedex/";
-
     facade
       .fetchPokedex()
       .then((data) => {
