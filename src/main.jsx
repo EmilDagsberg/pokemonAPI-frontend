@@ -2,17 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import App from "./App";
-import Home from "./pages/home/Home";
-import EndpointTable from "./pages/endpointTable/EndpointTable";
-import FetchPokemon from "./pages/fetchPokemon/FetchPokemon";
-import Vision from "./pages/vision/Vision";
-import Pokedex from "./pages/pokedex/Pokedex";
-import GetRandomPokemon from "./pages/getRandom/GetRandomPokemon";
-import FetchRandomPokemonByType from "./pages/fetchPokemon/FetchPokemonByType";
+import Home from "./Pages/home/Home";
+import EndpointTable from "./Pages/endpointTable/EndpointTable";
+import FetchPokemon from "./Pages/fetchPokemon/FetchPokemon";
+import Vision from "./Pages/vision/Vision";
+import Pokedex from "./Pages/pokedex/Pokedex";
+import GetRandomPokemon from "./Pages/getRandom/GetRandomPokemon";
+import FetchRandomPokemonByType from "./Pages/fetchPokemon/FetchPokemonByType";
 import Registerpage from "./Pages/register/Registerpage";
-import DeleteUpdatePokemon from "./pages/admin/DeleteUpdatePokemon";
+import DeleteUpdatePokemon from "./Pages/admin/DeleteUpdatePokemon";
 import RequireAdmin from "./RequireAdmin";
-import CreatePokemon from "./pages/admin/CreatePokemon";
+import CreatePokemon from "./Pages/admin/CreatePokemon";
 
 
 
