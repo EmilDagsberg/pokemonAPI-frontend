@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import App from "./App";
-import Home from "./pages/home/Home";
+import Home from "./pages/home/Home.jsx";
 import EndpointTable from "./pages/endpointTable/EndpointTable";
 import FetchPokemon from "./pages/fetchPokemon/FetchPokemon";
 import Vision from "./pages/vision/Vision";
