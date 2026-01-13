@@ -9,18 +9,15 @@ export default function Pokedex() {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   useEffect(() => {
-    const API_URI = "http://localhost:7070/api/pokedex/";
-
     facade
       .fetchPokedex()
       .then((data) => {
         setPokedex(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error while fetching Pokedex data", error);
       });
-
-    setLoading(false);
   }, []);
 
   const handleAddtoTeam = (pokemonId) => {
@@ -64,12 +61,16 @@ export default function Pokedex() {
               <h3>Name: {pokemon.name}</h3>
               {pokemon.onTeam ? (
                 <p>On team: ✅</p>
-              )
-            :
-            (
-              <button onClick={() => handleAddtoTeam(pokemon.id)}>Add to team</button>
-            )
-            }
+              ) : (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAddtoTeam(pokemon.id);
+                  }}
+                >
+                  Add to team
+                </button>
+              )}
             </div>
           ))}
         </div>
